@@ -1,8 +1,38 @@
-
 h1 {
-  background-color: black;
+  color: white;
+  background-color: lightblue;
 }
 
-.repoList {
-  background-color: black;
+#repoContainer {
+  background-color: lightblue;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column: 3;
+  padding: 25px 25px 25px 25px;
+  border-style: double;
 }
+
+.nameContainer {
+  display: grid;
+  grid-column: 3;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-style: outset;
+}
+
+.starContainer {
+  display: grid;
+  grid-column: 3;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-style: inset;
+}
+
+.everything {
+  background-color: grey;
+}
+
+

@@ -5,11 +5,9 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
 })
 
 var repoSchema = mongoose.Schema({
-  // pkey: {type: String, unique: true },
   name: String,
   url: { type: String, unique: true },
   stars: Number

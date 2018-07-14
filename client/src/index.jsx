@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
-// import './style.css/'
+import './style.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class App extends React.Component {
     this.state = { 
       repos: []
     }
-
   }
 
   componentDidMount() {
@@ -31,7 +30,6 @@ class App extends React.Component {
         console.log(err, 'error');
       }
     });
-    console.log(this.state);
   }
 
   search (term) {
@@ -52,10 +50,10 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
-      <h1>Github Fetcher</h1>
-      <RepoList className="repoList" repos={this.state.repos}/>
+    return (<div className="everything">
+      <h1>Hanjoon's Github Bonanaza</h1>
       <Search onSearch={this.search.bind(this)} getRepos={this.getRepos.bind(this)} />
+      <RepoList className="repoList" repos={this.state.repos}/>
     </div>)
   }
 }

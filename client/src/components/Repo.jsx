@@ -1,11 +1,12 @@
 import React from 'react';
+import style from '../style.css'
 
 const Repo = (props) => (
-  <div>
+  <div id="repoContainer">
     <h4> 
-      <a href={props.repo.url}> {props.repo.name} </a>
+      <div className="nameContainer"><a href={props.repo.url}> {props.repo.name} </a></div>
     </h4>
-    Number of Stars: {props.repo.stars}  
+    <div className="starContainer">Number of Stars: {props.repo.stars}</div>  
   </div>
 )
 

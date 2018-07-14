@@ -1,17 +1,17 @@
 import React from 'react';
 import Repo from './Repo.jsx'
+import style from '../style.css'
 
 function RepoList(props) {
   const repos = props.repos;
   return (
     <div>
-      <h4> Repo List Component </h4>
       There are {props.repos.length} repos.
-      <ul>
+      <div>
         {repos.map(repo => 
           <Repo repo={repo} />
         )}
-      </ul>
+      </div>
     </div>
   )
 }
