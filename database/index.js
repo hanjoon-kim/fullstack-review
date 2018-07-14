@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/repos');
 
 var db = mongoose.connection;
 
@@ -8,22 +8,39 @@ db.once('open', function() {
   // we're connected!
 })
 
-let repoSchema = mongoose.Schema({
+var repoSchema = mongoose.Schema({
+  // pkey: {type: String, unique: true },
   name: String,
-  url: String,
+  url: { type: String, unique: true },
   startgazers_count: Number
-  
 });
 
-let Repo = mongoose.model('Repo', repoSchema);
+var Repo = mongoose.model('Repo', repoSchema);
+
+repoSchema.index({ pkey: 1 }, { unique: true });
 
 
-let save = (name, url, stargazers) => {
-  // TODO: Your code here
-  // This function should save a repo or repos to
-  // the MongoDB
-
-  Repo.create({name: name, url: url, startgazers_count: startgazers})
+var save = (data) => {
+  var instance = new Repo({name: data.name, url: data.url, stargazers_count: data.stars});
+  instance.save(function(err) {
+    if (err) {
+      return console.error(err);
+    }
+  });
 }
+
+var getRepos = (response) =>{
+  repos.find({}, function(response) {
+    return function(err, data){
+      if (err){
+        console.log('error occured');
+        return;
+      }
+      res.send('My repos are:\n');
+      console.log(data);
+    }
+  });
+}
+
 
 module.exports.save = save;

@@ -13,9 +13,38 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    $.ajax({
+      method: "GET",
+      url: '/repos',
+      data: 'data',
+      success(data) {
+        this.setState({repos: data})
+      },
+      error(err) {
+        console.log(err, 'error');
+      }
+      
+    
+    });
+
+  }
+
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
+    let obj = {term: term}
+    var databaseRow;
+    $.ajax({
+      method: "POST",
+      url: '/repos',
+      data: obj,
+      success(data) {
+        console.log('success!')
+      },
+      error(err) {
+        console.log(err, 'error');
+      }
+    });
   }
 
   render () {
