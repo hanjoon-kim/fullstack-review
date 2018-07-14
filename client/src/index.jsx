@@ -14,20 +14,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    var self = this;
     $.ajax({
       method: "GET",
       url: '/repos',
       data: 'data',
       success(data) {
-        this.setState({repos: data})
+        self.setState({repos: data})
       },
       error(err) {
         console.log(err, 'error');
       }
-      
-    
     });
-
   }
 
   search (term) {

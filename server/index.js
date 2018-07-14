@@ -38,8 +38,20 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  
-  
+  var obj = db.getRepos(function(err, results) {
+    if (err) {
+      console.log(err, 'get error in server'); 
+    } else {
+      console.log(results, 'Success Server Get');
+      res.send(results);
+    }
+    
+
+
+
+
+
+  });
 });
 
 let port = 1128;

@@ -21,7 +21,7 @@ repoSchema.index({ pkey: 1 }, { unique: true });
 
 
 var save = (data) => {
-  var instance = new Repo({name: data.name, url: data.url, stargazers_count: data.stars});
+  var instance = new Repo(data);
   instance.save(function(err) {
     if (err) {
       return console.error(err);
@@ -29,18 +29,16 @@ var save = (data) => {
   });
 }
 
-var getRepos = (response) =>{
-  repos.find({}, function(response) {
-    return function(err, data){
-      if (err){
-        console.log('error occured');
-        return;
-      }
-      res.send('My repos are:\n');
-      console.log(data);
+var getRepos = (callback) => {
+  Repo.find(function(err, data){
+    if (err){
+      console.log('error occured');
+    } else {
+      callback(null, data);
     }
   });
 }
 
 
 module.exports.save = save;
+module.exports.getRepos = getRepos;

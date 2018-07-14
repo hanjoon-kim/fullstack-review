@@ -3,7 +3,6 @@ import Repo from './Repo.jsx'
 
 function RepoList(props) {
   const repos = props.repos;
-  console.log(repos);
   return (
     <div>
       <h4> Repo List Component </h4>
