@@ -45,12 +45,6 @@ app.get('/repos', function (req, res) {
       console.log(results, 'Success Server Get');
       res.send(results);
     }
-    
-
-
-
-
-
   });
 });
 

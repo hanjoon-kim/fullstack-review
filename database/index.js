@@ -12,7 +12,7 @@ var repoSchema = mongoose.Schema({
   // pkey: {type: String, unique: true },
   name: String,
   url: { type: String, unique: true },
-  startgazers_count: Number
+  stars: Number
 });
 
 var Repo = mongoose.model('Repo', repoSchema);

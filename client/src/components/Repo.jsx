@@ -2,8 +2,10 @@ import React from 'react';
 
 const Repo = (props) => (
   <div>
-    <h4> Repo Component </h4>
-   I'm a repo
+    <h4> 
+      <a href={props.repo.url}> {props.repo.name} </a>
+    </h4>
+    Number of Stars: {props.repo.stars}  
   </div>
 )
 

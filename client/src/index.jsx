@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
+// import './style.css/'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getRepos();
+  }
+
+  getRepos() {
     var self = this;
     $.ajax({
       method: "GET",
@@ -26,12 +31,12 @@ class App extends React.Component {
         console.log(err, 'error');
       }
     });
+    console.log(this.state);
   }
 
   search (term) {
     console.log(`${term} was searched`);
     let obj = {term: term}
-    var databaseRow;
     $.ajax({
       method: "POST",
       url: '/repos',
@@ -43,13 +48,14 @@ class App extends React.Component {
         console.log(err, 'error');
       }
     });
+    console.log(this.state);
   }
 
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <RepoList className="repoList" repos={this.state.repos}/>
+      <Search onSearch={this.search.bind(this)} getRepos={this.getRepos.bind(this)} />
     </div>)
   }
 }
